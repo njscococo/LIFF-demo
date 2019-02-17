@@ -14,8 +14,7 @@ function initializeApp(data) {
 
     //send axios call
     document.getElementById('btnaxios').addEventListener('click', function(){
-        console.warn('$:', $);
-        console.warn('axios:', axios)
+        console.warn('axios:', axios.get)
         let config = {
             url: 'https://api.github.comn',
             //url: 'https://api.github.com',
