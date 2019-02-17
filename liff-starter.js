@@ -15,26 +15,26 @@ function initializeApp(data) {
     //send axios call
     document.getElementById('btnaxios').addEventListener('click', function(){
         let config = {
-            url: 'https://ebp.tmnewa.com.tw/Partner/App/SignIn',
+            url: 'https://api.github.comn',
             //url: 'https://api.github.com',
-            method: 'post',
+            method: 'get',
             //baseURL: 'https://ebp.tmnewa.com.tw/',
-            headers: {
-                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
-                'Content-Type': 'application/json',
-                //'Host': 'ebp.tmnewa.com.tw'
-            },
-            data: {
-                //url: 'https://localhost:5001/api/values',
-                client: '061782',
-                secret: 'Newa0617'
-            }
+            // headers: {
+            //     'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
+            //     'Content-Type': 'application/json',
+            //     //'Host': 'ebp.tmnewa.com.tw'
+            // },
+            // data: {
+            //     //url: 'https://localhost:5001/api/values',
+            //     client: '061782',
+            //     secret: 'Newa0617'
+            // }
         };
         //console.log('config:', config)
         axios(config)
             .then((res) => {
-                console.log('res:', res.data.access_token);
-                Actions.carsearch({token: res.data.access_token});
+                console.log('res:', res.data);
+                Actions.carsearch({token: res.data});
             })
             .catch((err) => { console.log('err:', err) });
     });
