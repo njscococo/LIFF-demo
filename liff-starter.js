@@ -15,7 +15,7 @@ function initializeApp(data) {
     //send axios call
     document.getElementById('btnaxios').addEventListener('click', function(){
         let config = {
-            url: 'https://api.github.comn',
+            url: 'https://api.github.com',
             //url: 'https://api.github.com',
             method: 'get',
             //baseURL: 'https://ebp.tmnewa.com.tw/',
