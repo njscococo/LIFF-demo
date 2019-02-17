@@ -14,7 +14,6 @@ function initializeApp(data) {
 
     //send axios call
     document.getElementById('btnaxios').addEventListener('click', function(){
-        console.warn('axios:', axios.get)
         let config = {
             url: 'https://api.github.comn',
             //url: 'https://api.github.com',
@@ -33,11 +32,11 @@ function initializeApp(data) {
         };
         //console.log('config:', config)
         axios(config)
-            .then((res) => {
+            .then(function(res){
                 console.log('res:', res.data);
                 Actions.carsearch({token: res.data});
             })
-            .catch((err) => { console.log('err:', err) });
+            .catch(function(err){ console.log('err:', err) });
     });
 
     // openWindow call
