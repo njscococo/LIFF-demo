@@ -88,12 +88,12 @@ function initializeApp(data) {
                                 "type": "text",
                                 "text": "world"
                             },
-                            {
-                                "type": "image",
-                                "url": dataURL,
-                                "size": "full",
-                                "aspectRatio": "1.91:1"
-                              }
+                            // {
+                            //     "type": "image",
+                            //     "url": dataURL,
+                            //     "size": "full",
+                            //     "aspectRatio": "1.91:1"
+                            //   }
                         ]
                     }
                 }

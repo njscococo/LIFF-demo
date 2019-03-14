@@ -13,6 +13,29 @@
 </head>
 
 <body>
+        <div id="signature-pad" class="signature-pad">
+                <div class="signature-pad--body">
+                  <canvas></canvas>
+                </div>
+                <div class="signature-pad--footer">
+                  <div class="description">Sign above</div>
+            
+                  <div class="signature-pad--actions">
+                    <div>
+                      <button type="button" class="button clear" data-action="clear">Clear</button>
+                      <button type="button" class="button" data-action="change-color">換顏色(隨機)</button>
+                      <button type="button" class="button" data-action="undo">Undo</button>
+            
+                    </div>
+                    <div>
+                      <!-- <button type="button" class="button save" data-action="save-png">Save as PNG</button> -->
+                      <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+                      <!-- <button type="button" class="button save" data-action="save-svg">Save as SVG</button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
     <div class="buttongroup">
         <div class="buttonrow">
             <button id="openwindowbutton">Open Window</button>
@@ -88,29 +111,7 @@
         </table>
     </div>
 
-    <div id="signature-pad" class="signature-pad">
-        <div class="signature-pad--body">
-          <canvas></canvas>
-        </div>
-        <div class="signature-pad--footer">
-          <div class="description">Sign above</div>
     
-          <div class="signature-pad--actions">
-            <div>
-              <button type="button" class="button clear" data-action="clear">Clear</button>
-              <button type="button" class="button" data-action="change-color">換顏色(隨機)</button>
-              <button type="button" class="button" data-action="undo">Undo</button>
-    
-            </div>
-            <div>
-              <!-- <button type="button" class="button save" data-action="save-png">Save as PNG</button> -->
-              <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-              <!-- <button type="button" class="button save" data-action="save-svg">Save as SVG</button> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="liff-starter.js"></script>
     <script src="signature_pad.umd.js"></script>
