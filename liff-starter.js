@@ -48,18 +48,14 @@ function initializeApp(data) {
         liff.sendMessages([{
             type: 'text',
             text: "You've successfully sent a message! Hooray!"
-        }, {
-            type: 'sticker',
-            packageId: '2',
-            stickerId: '144'
-        },{  
+        }, {  
             "type": "flex",
             "altText": "this is a flex message",
             "contents": {
               "type": "bubble",
               "body": {
                 "type": "box",
-                "layout": "vertical",
+                "layout": "horizontal",
                 "contents": [
                   {
                     "type": "text",
@@ -68,6 +64,10 @@ function initializeApp(data) {
                   {
                     "type": "text",
                     "text": "world"
+                  },{
+                    "type": 'sticker',
+                    "packageId": '2',
+                    "stickerId": '144'
                   }
                 ]
               }
