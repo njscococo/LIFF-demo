@@ -17,9 +17,9 @@ function initializeApp(data) {
     var clearButton = wrapper.querySelector("[data-action=clear]");
     var changeColorButton = wrapper.querySelector("[data-action=change-color]");
     var undoButton = wrapper.querySelector("[data-action=undo]");
-    var savePNGButton = wrapper.querySelector("[data-action=save-png]");
+    // var savePNGButton = wrapper.querySelector("[data-action=save-png]");
     var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
-    var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
+    //var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
     var canvas = wrapper.querySelector("canvas");
     var signaturePad = new SignaturePad(canvas, {
         // It's Necessary to use an opaque color when saving image as JPEG;
@@ -49,32 +49,70 @@ function initializeApp(data) {
         signaturePad.penColor = color;
     });
 
-    savePNGButton.addEventListener("click", function (event) {
-        if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
-        } else {
-            var dataURL = signaturePad.toDataURL();
-            download(dataURL, "signature.png");
-        }
-    });
+    // savePNGButton.addEventListener("click", function (event) {
+    //     if (signaturePad.isEmpty()) {
+    //         alert("Please provide a signature first.");
+    //     } else {
+    //         var dataURL = signaturePad.toDataURL();
+    //         download(dataURL, "signature.png");
+    //     }
+    // });
 
     saveJPGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
             alert("Please provide a signature first.");
         } else {
             var dataURL = signaturePad.toDataURL("image/jpeg");
-            download(dataURL, "signature.jpg");
+            //download(dataURL, "signature.jpg");
+            liff.sendMessages([{
+                type: 'text',
+                text: "來畫圖!"
+            }, {
+                "type": "flex",
+                "altText": "this is a flex message",
+                "contents": {
+                    "type": "bubble",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "hello"
+                            },
+                            {
+                                "type": "separator",
+                                "color": "#000000"
+                            },
+                            {
+                                "type": "text",
+                                "text": "world"
+                            },
+                            {
+                                "type": "image",
+                                "url": dataURL,
+                                "size": "full",
+                                "aspectRatio": "1.91:1"
+                              }
+                        ]
+                    }
+                }
+            }]).then(function () {
+                window.alert("Message sent");
+            }).catch(function (error) {
+                window.alert("Error sending message: " + error);
+            });
         }
     });
 
-    saveSVGButton.addEventListener("click", function (event) {
-        if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
-        } else {
-            var dataURL = signaturePad.toDataURL('image/svg+xml');
-            download(dataURL, "signature.svg");
-        }
-    });
+    // saveSVGButton.addEventListener("click", function (event) {
+    //     if (signaturePad.isEmpty()) {
+    //         alert("Please provide a signature first.");
+    //     } else {
+    //         var dataURL = signaturePad.toDataURL('image/svg+xml');
+    //         download(dataURL, "signature.svg");
+    //     }
+    // });
 
 
 
