@@ -88,12 +88,12 @@ function initializeApp(data) {
                                 "type": "text",
                                 "text": "world"
                             },
-                            // {
-                            //     "type": "image",
-                            //     "url": dataURL,
-                            //     "size": "full",
-                            //     "aspectRatio": "1.91:1"
-                            //   }
+                            {
+                                "type": "image",
+                                "url": "https://www.w3schools.com/css/img_lights.jpg",
+                                "size": "full",
+                                "aspectRatio": "1.91:1"
+                              }
                         ]
                     }
                 }
