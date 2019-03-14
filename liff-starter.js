@@ -52,7 +52,27 @@ function initializeApp(data) {
             type: 'sticker',
             packageId: '2',
             stickerId: '144'
-        }]).then(function () {
+        },{  
+            "type": "flex",
+            "altText": "this is a flex message",
+            "contents": {
+              "type": "bubble",
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "hello"
+                  },
+                  {
+                    "type": "text",
+                    "text": "world"
+                  }
+                ]
+              }
+            }
+          }]).then(function () {
             window.alert("Message sent");
         }).catch(function (error) {
             window.alert("Error sending message: " + error);
