@@ -62,12 +62,12 @@ function initializeApp(data) {
                     "text": "hello"
                   },
                   {
+                    "type": "separator",
+                    "color": "#000000"
+                  },
+                  {
                     "type": "text",
                     "text": "world"
-                  },{
-                    "type": 'sticker',
-                    "packageId": '2',
-                    "stickerId": '144'
                   }
                 ]
               }
