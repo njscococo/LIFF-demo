@@ -68,10 +68,10 @@ function initializeApp(data) {
             let config = {
                 url: sendImageUrl,
                 method: 'get',
-                data:{
-                    userId: 'test',
-                    drawImage: dataURL
-                }
+                // data:{
+                //     userId: 'test',
+                //     drawImage: dataURL
+                // }
             }
 
             axios(config).then(res=>{
