@@ -77,51 +77,51 @@ function initializeApp(data) {
             axios(config)
                 .then(function (res) {
                     console.log('send img done:', res);
-                    axios({
-                        url: 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
-                        method: 'get'
-                    }).then(resp=>{
-                        console.log('resp:', resp)
+                    // axios({
+                    //     url: 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
+                    //     method: 'get'
+                    // }).then(resp=>{
+                    //     console.log('resp:', resp)
 
-                    })
-                    // liff.sendMessages([{
-                    //     type: 'text',
-                    //     text: "來畫圖!"
-                    // }, {
-                    //     "type": "flex",
-                    //     "altText": "this is a flex message",
-                    //     "contents": {
-                    //         "type": "bubble",
-                    //         "body": {
-                    //             "type": "box",
-                    //             "layout": "vertical",
-                    //             "contents": [
-                    //                 {
-                    //                     "type": "text",
-                    //                     "text": "hello"
-                    //                 },
-                    //                 {
-                    //                     "type": "separator",
-                    //                     "color": "#000000"
-                    //                 },
-                    //                 {
-                    //                     "type": "text",
-                    //                     "text": "world"
-                    //                 },
-                    //                 {
-                    //                     "type": "image",
-                    //                     "url": "https://www.w3schools.com/css/img_lights.jpg",
-                    //                     "size": "full",
-                    //                     "aspectRatio": "1.91:1"
-                    //                 }
-                    //             ]
-                    //         }
-                    //     }
-                    // }]).then(function () {
-                    //     window.alert("Message sent");
-                    // }).catch(function (error) {
-                    //     window.alert("Error sending message: " + error);
-                    // });
+                    // })
+                    liff.sendMessages([{
+                        type: 'text',
+                        text: "來畫圖!"
+                    }, {
+                        "type": "flex",
+                        "altText": "this is a flex message",
+                        "contents": {
+                            "type": "bubble",
+                            "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "hello"
+                                    },
+                                    {
+                                        "type": "separator",
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "world"
+                                    },
+                                    {
+                                        "type": "image",
+                                        "url": 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
+                                        "size": "full",
+                                        "aspectRatio": "1.91:1"
+                                    }
+                                ]
+                            }
+                        }
+                    }]).then(function () {
+                        window.alert("Message sent");
+                    }).catch(function (error) {
+                        window.alert("Error sending message: " + error);
+                    });
                 }).catch(function (err) {
                     console.log('err:', err);
                 });
