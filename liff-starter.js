@@ -1,6 +1,26 @@
 window.onload = function (e) {
     liff.init(function (data) {
+        console.log('init data:', data);
         initializeApp(data);
+        liff.getProfile().then(function (profile) {
+            console.log('profile:', profile)
+            // document.getElementById('useridprofilefield').textContent = profile.userId;
+            // document.getElementById('displaynamefield').textContent = profile.displayName;
+
+            // const profilePictureDiv = document.getElementById('profilepicturediv');
+            // if (profilePictureDiv.firstElementChild) {
+            //     profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+            // }
+            // const img = document.createElement('img');
+            // img.src = profile.pictureUrl;
+            // img.alt = "Profile Picture";
+            // profilePictureDiv.appendChild(img);
+
+            // document.getElementById('statusmessagefield').textContent = profile.statusMessage;
+            // toggleProfileData();
+        }).catch(function (error) {
+            window.alert("Error getting profile: " + error);
+        });
     });
 };
 
@@ -63,24 +83,62 @@ function initializeApp(data) {
             alert("Draw something first!!");
         } else {
             var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
-            
+
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
             let config = {
                 url: sendImageUrl,
                 method: 'post',
-                data:{
+                data: {
                     userId: 'test123',
                     drawImage: dataURL
-                }                
+                }
             }
 
             axios(config)
-            .then(function (res) {
-                console.log('send img done:', res);
-            }).catch(function (err) {
-                console.log('err:', err);
-            });
+                .then(function (res) {
+                    console.log('send img done:', res);
+                    liff.sendMessages([{
+                        type: 'text',
+                        text: "來畫圖!"
+                    }, {
+                        "type": "flex",
+                        "altText": "this is a flex message",
+                        "contents": {
+                            "type": "bubble",
+                            "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "hello"
+                                    },
+                                    {
+                                        "type": "separator",
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "world"
+                                    },
+                                    {
+                                        "type": "image",
+                                        "url": "https://www.w3schools.com/css/img_lights.jpg",
+                                        "size": "full",
+                                        "aspectRatio": "1.91:1"
+                                    }
+                                ]
+                            }
+                        }
+                    }]).then(function () {
+                        window.alert("Message sent");
+                    }).catch(function (error) {
+                        window.alert("Error sending message: " + error);
+                    });
+                }).catch(function (err) {
+                    console.log('err:', err);
+                });
             //download(dataURL, "signature.jpg");
             // liff.sendMessages([{
             //     type: 'text',
@@ -268,39 +326,6 @@ function resizeCanvas() {
     signaturePad.clear();
 }
 
-function download(dataURL, filename) {
-    if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
-        window.open(dataURL);
-    } else {
-        var blob = dataURLToBlob(dataURL);
-        var url = window.URL.createObjectURL(blob);
 
-        var a = document.createElement("a");
-        a.style = "display: none";
-        a.href = url;
-        a.download = filename;
 
-        document.body.appendChild(a);
-        a.click();
-
-        window.URL.revokeObjectURL(url);
-    }
-}
-
-// One could simply use Canvas#toBlob method instead, but it's just to show
-// that it can be done using result of SignaturePad#toDataURL.
-function dataURLToBlob(dataURL) {
-    // Code taken from https://github.com/ebidel/filer.js
-    var parts = dataURL.split(';base64,');
-    var contentType = parts[0].split(":")[1];
-    var raw = window.atob(parts[1]);
-    var rawLength = raw.length;
-    var uInt8Array = new Uint8Array(rawLength);
-
-    for (var i = 0; i < rawLength; ++i) {
-        uInt8Array[i] = raw.charCodeAt(i);
-    }
-
-    return new Blob([uInt8Array], { type: contentType });
-}
 
