@@ -9,10 +9,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
     <script>
         var vConsole = new VConsole();
-        console.log('test123456')
+        //console.log('test123456')
     </script>
     <style type="text/css">
-        .wrapper {}
+        .signature-pad {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            font-size: 10px;
+            width: 100%;
+            height: 100%;
+            max-width: 700px;
+            max-height: 460px;
+            border: 1px solid #e8e8e8;
+            background-color: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
+            border-radius: 4px;
+            padding: 16px;
+        }
+
+        .signature-pad--body {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border: 1px solid #f4f4f4;
+        }
+
+        .signature-pad--body canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+        }
     </style>
 </head>
 
@@ -22,7 +59,6 @@
             <canvas></canvas>
         </div>
         <div class="signature-pad--footer">
-            <div class="description">Sign above</div>
 
             <div class="buttongroup">
                 <div class="buttonrow">
@@ -38,29 +74,7 @@
         </div>
     </div>
 
-    <!-- <div class="buttongroup">
-        <div class="buttonrow">
-            <button id="openwindowbutton">Open Window</button>
-            <button id="closewindowbutton">Close Window</button>
-            <button id="btnaxios">send axios</button>
-        </div>
-        <div class="buttonrow">
-            <button id="getaccesstoken">Get Access Token</button>
-            <button id="getprofilebutton">Get Profile</button>
-            <button id="sendmessagebutton">Send Message</button>
-        </div>
-    </div>
 
-    <div id="accesstokendata">
-        <h2>Access Token</h2>
-        <a href="#" onclick="toggleAccessToken()">Close Access Token</a>
-        <table border="1">
-            <tr>
-                <th>accessToken</th>
-                <td id="accesstokenfield"></td>
-            </tr>
-        </table>
-    </div>-->v>
     <div class="buttongroup">
         <div class="buttonrow">
             <button id="getprofilebutton">Get Profile</button>
