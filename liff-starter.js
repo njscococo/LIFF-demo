@@ -83,7 +83,7 @@ function initializeApp(data) {
             alert("Draw something first!!");
         } else {
             console.log('jpg:', data.context.userId, signaturePad)
-            var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
+            var sendImageUrl = '/users';
 
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
@@ -100,7 +100,11 @@ function initializeApp(data) {
                 .then(function (res) {
                     console.log('send img done:', res);
                     axios({
-                        url: 'https://linetestingserver.herokuapp.com/'+data.context.userId
+                        url: '/user/'+data.context.userId,
+                        method: 'get'
+                    }).then(resp=>{
+                        console.log('resp:', resp)
+
                     })
                     // liff.sendMessages([{
                     //     type: 'text',
