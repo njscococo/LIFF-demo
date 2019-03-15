@@ -1,23 +1,10 @@
 window.onload = function (e) {
     liff.init(function (data) {
-        console.log('init data:', data);
+        //console.log('init data:', data);
         initializeApp(data);
         liff.getProfile().then(function (profile) {
-            console.log('profile:', profile)
-            // document.getElementById('useridprofilefield').textContent = profile.userId;
-            // document.getElementById('displaynamefield').textContent = profile.displayName;
-
-            // const profilePictureDiv = document.getElementById('profilepicturediv');
-            // if (profilePictureDiv.firstElementChild) {
-            //     profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            // }
-            // const img = document.createElement('img');
-            // img.src = profile.pictureUrl;
-            // img.alt = "Profile Picture";
-            // profilePictureDiv.appendChild(img);
-
-            // document.getElementById('statusmessagefield').textContent = profile.statusMessage;
-            // toggleProfileData();
+            //console.log('profile:', profile)
+     
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);
         });
@@ -69,21 +56,12 @@ function initializeApp(data) {
         signaturePad.penColor = color;
     });
 
-    // savePNGButton.addEventListener("click", function (event) {
-    //     if (signaturePad.isEmpty()) {
-    //         alert("Please provide a signature first.");
-    //     } else {
-    //         var dataURL = signaturePad.toDataURL();
-    //         download(dataURL, "signature.png");
-    //     }
-    // });
-
     saveJPGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
-            console.log('jpg:', data.context.userId, signaturePad)
-            var sendImageUrl = '/users';
+            //console.log('jpg:', data.context.userId, signaturePad)
+            var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
 
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
@@ -100,7 +78,7 @@ function initializeApp(data) {
                 .then(function (res) {
                     console.log('send img done:', res);
                     axios({
-                        url: '/user/'+data.context.userId,
+                        url: 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
                         method: 'get'
                     }).then(resp=>{
                         console.log('resp:', resp)
