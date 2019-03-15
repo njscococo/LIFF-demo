@@ -62,12 +62,12 @@ function initializeApp(data) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
-            var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
+            var sendImageUrl = 'https://linetestingserver.herokuapp.com';
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
             let config = {
                 url: sendImageUrl,
-                method: 'post',
+                method: 'get',
                 data:{
                     userId: 'test',
                     drawImage: dataURL
