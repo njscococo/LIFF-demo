@@ -82,6 +82,7 @@ function initializeApp(data) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
+            console.log('jpg:', data.context.userId, signaturePad)
             var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
 
             var dataURL = signaturePad.toDataURL("image/jpeg");
@@ -90,7 +91,7 @@ function initializeApp(data) {
                 url: sendImageUrl,
                 method: 'post',
                 data: {
-                    userId: 'test123',
+                    userId: data.context.userId,
                     drawImage: dataURL
                 }
             }
@@ -98,86 +99,51 @@ function initializeApp(data) {
             axios(config)
                 .then(function (res) {
                     console.log('send img done:', res);
-                    liff.sendMessages([{
-                        type: 'text',
-                        text: "來畫圖!"
-                    }, {
-                        "type": "flex",
-                        "altText": "this is a flex message",
-                        "contents": {
-                            "type": "bubble",
-                            "body": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "hello"
-                                    },
-                                    {
-                                        "type": "separator",
-                                        "color": "#000000"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "world"
-                                    },
-                                    {
-                                        "type": "image",
-                                        "url": "https://www.w3schools.com/css/img_lights.jpg",
-                                        "size": "full",
-                                        "aspectRatio": "1.91:1"
-                                    }
-                                ]
-                            }
-                        }
-                    }]).then(function () {
-                        window.alert("Message sent");
-                    }).catch(function (error) {
-                        window.alert("Error sending message: " + error);
-                    });
+                    axios({
+                        url: 'https://linetestingserver.herokuapp.com/'+data.context.userId
+                    })
+                    // liff.sendMessages([{
+                    //     type: 'text',
+                    //     text: "來畫圖!"
+                    // }, {
+                    //     "type": "flex",
+                    //     "altText": "this is a flex message",
+                    //     "contents": {
+                    //         "type": "bubble",
+                    //         "body": {
+                    //             "type": "box",
+                    //             "layout": "vertical",
+                    //             "contents": [
+                    //                 {
+                    //                     "type": "text",
+                    //                     "text": "hello"
+                    //                 },
+                    //                 {
+                    //                     "type": "separator",
+                    //                     "color": "#000000"
+                    //                 },
+                    //                 {
+                    //                     "type": "text",
+                    //                     "text": "world"
+                    //                 },
+                    //                 {
+                    //                     "type": "image",
+                    //                     "url": "https://www.w3schools.com/css/img_lights.jpg",
+                    //                     "size": "full",
+                    //                     "aspectRatio": "1.91:1"
+                    //                 }
+                    //             ]
+                    //         }
+                    //     }
+                    // }]).then(function () {
+                    //     window.alert("Message sent");
+                    // }).catch(function (error) {
+                    //     window.alert("Error sending message: " + error);
+                    // });
                 }).catch(function (err) {
                     console.log('err:', err);
                 });
-            //download(dataURL, "signature.jpg");
-            // liff.sendMessages([{
-            //     type: 'text',
-            //     text: "來畫圖!"
-            // }, {
-            //     "type": "flex",
-            //     "altText": "this is a flex message",
-            //     "contents": {
-            //         "type": "bubble",
-            //         "body": {
-            //             "type": "box",
-            //             "layout": "vertical",
-            //             "contents": [
-            //                 {
-            //                     "type": "text",
-            //                     "text": "hello"
-            //                 },
-            //                 {
-            //                     "type": "separator",
-            //                     "color": "#000000"
-            //                 },
-            //                 {
-            //                     "type": "text",
-            //                     "text": "world"
-            //                 },
-            //                 {
-            //                     "type": "image",
-            //                     "url": "https://www.w3schools.com/css/img_lights.jpg",
-            //                     "size": "full",
-            //                     "aspectRatio": "1.91:1"
-            //                   }
-            //             ]
-            //         }
-            //     }
-            // }]).then(function () {
-            //     window.alert("Message sent");
-            // }).catch(function (error) {
-            //     window.alert("Error sending message: " + error);
-            // });
+
         }
     });
 
