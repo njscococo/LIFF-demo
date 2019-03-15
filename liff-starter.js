@@ -60,48 +60,64 @@ function initializeApp(data) {
 
     saveJPGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
+            alert("Draw something first!!");
         } else {
+            var sendImageUrl = ' https://linetestingserver.herokuapp.com/users';
             var dataURL = signaturePad.toDataURL("image/jpeg");
-            //download(dataURL, "signature.jpg");
-            liff.sendMessages([{
-                type: 'text',
-                text: "來畫圖!"
-            }, {
-                "type": "flex",
-                "altText": "this is a flex message",
-                "contents": {
-                    "type": "bubble",
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "hello"
-                            },
-                            {
-                                "type": "separator",
-                                "color": "#000000"
-                            },
-                            {
-                                "type": "text",
-                                "text": "world"
-                            },
-                            {
-                                "type": "image",
-                                "url": "https://www.w3schools.com/css/img_lights.jpg",
-                                "size": "full",
-                                "aspectRatio": "1.91:1"
-                              }
-                        ]
-                    }
+
+            let config = {
+                url: sendImageUrl,
+                method: 'post',
+                data:{
+                    userId: 'test',
+                    drawImage: dataURL
                 }
-            }]).then(function () {
-                window.alert("Message sent");
-            }).catch(function (error) {
-                window.alert("Error sending message: " + error);
+            }
+
+            axios(config).then(res=>{
+                console.log('send img done:', res);
+            }).catch(err=>{
+                console.log('err:', err);
             });
+            //download(dataURL, "signature.jpg");
+            // liff.sendMessages([{
+            //     type: 'text',
+            //     text: "來畫圖!"
+            // }, {
+            //     "type": "flex",
+            //     "altText": "this is a flex message",
+            //     "contents": {
+            //         "type": "bubble",
+            //         "body": {
+            //             "type": "box",
+            //             "layout": "vertical",
+            //             "contents": [
+            //                 {
+            //                     "type": "text",
+            //                     "text": "hello"
+            //                 },
+            //                 {
+            //                     "type": "separator",
+            //                     "color": "#000000"
+            //                 },
+            //                 {
+            //                     "type": "text",
+            //                     "text": "world"
+            //                 },
+            //                 {
+            //                     "type": "image",
+            //                     "url": "https://www.w3schools.com/css/img_lights.jpg",
+            //                     "size": "full",
+            //                     "aspectRatio": "1.91:1"
+            //                   }
+            //             ]
+            //         }
+            //     }
+            // }]).then(function () {
+            //     window.alert("Message sent");
+            // }).catch(function (error) {
+            //     window.alert("Error sending message: " + error);
+            // });
         }
     });
 
