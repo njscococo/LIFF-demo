@@ -62,7 +62,8 @@ function initializeApp(data) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
-            var sendImageUrl = 'https://linetestingsesrver.herokuapp.com';
+            var sendImageUrl = 'https://linetestingserver.herokuapp.com';
+            
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
             let config = {
@@ -78,7 +79,8 @@ function initializeApp(data) {
                 },
             }
 
-            axios(config).then(function (res) {
+            axios(config)
+            .then(function (res) {
                 console.log('send img done:', res);
             }).catch(function (err) {
                 console.log('err:', err);
