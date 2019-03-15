@@ -25,7 +25,7 @@ function initializeApp(data) {
     var changeColorButton = wrapper.querySelector("[data-action=change-color]");
     var undoButton = wrapper.querySelector("[data-action=undo]");
     // var savePNGButton = wrapper.querySelector("[data-action=save-png]");
-    var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
+    var drawImage = wrapper.querySelector("[data-action=save-jpg]");
     //var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
     var canvas = wrapper.querySelector("canvas");
     var signaturePad = new SignaturePad(canvas, {
@@ -56,7 +56,7 @@ function initializeApp(data) {
         signaturePad.penColor = color;
     });
 
-    saveJPGButton.addEventListener("click", function (event) {
+    drawImage.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
@@ -76,18 +76,9 @@ function initializeApp(data) {
 
             axios(config)
                 .then(function (res) {
-                    console.log('send img done:', res);
-                    // axios({
-                    //     url: 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
-                    //     method: 'get'
-                    // }).then(resp=>{
-                    //     console.log('resp:', resp)
-
-                    // })
+                    //console.log('send img done:', res);
+                
                     liff.sendMessages([{
-                        type: 'text',
-                        text: "來畫圖!"
-                    }, {
                         "type": "flex",
                         "altText": "this is a flex message",
                         "contents": {
@@ -98,16 +89,12 @@ function initializeApp(data) {
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "hello"
+                                        "text": "畫好囉！"
                                     },
                                     {
                                         "type": "separator",
                                         "color": "#000000"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "world"
-                                    },
+                                    },                                   
                                     {
                                         "type": "image",
                                         "url": 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
@@ -129,90 +116,60 @@ function initializeApp(data) {
         }
     });
 
-    // saveSVGButton.addEventListener("click", function (event) {
-    //     if (signaturePad.isEmpty()) {
-    //         alert("Please provide a signature first.");
-    //     } else {
-    //         var dataURL = signaturePad.toDataURL('image/svg+xml');
-    //         download(dataURL, "signature.svg");
-    //     }
+    // // openWindow call
+    // document.getElementById('openwindowbutton').addEventListener('click', function () {
+    //     liff.openWindow({
+    //         url: 'https://line.me'
+    //     });
     // });
 
+    // // closeWindow call
+    // document.getElementById('closewindowbutton').addEventListener('click', function () {
+    //     liff.closeWindow();
+    // });
 
+    // // sendMessages call
+    // document.getElementById('sendmessagebutton').addEventListener('click', function () {
+    //     liff.sendMessages([{
+    //         type: 'text',
+    //         text: "You've successfully sent a message! Hooray!"
+    //     }, {
+    //         "type": "flex",
+    //         "altText": "this is a flex message",
+    //         "contents": {
+    //             "type": "bubble",
+    //             "body": {
+    //                 "type": "box",
+    //                 "layout": "horizontal",
+    //                 "contents": [
+    //                     {
+    //                         "type": "text",
+    //                         "text": "hello"
+    //                     },
+    //                     {
+    //                         "type": "separator",
+    //                         "color": "#000000"
+    //                     },
+    //                     {
+    //                         "type": "text",
+    //                         "text": "world"
+    //                     }
+    //                 ]
+    //             }
+    //         }
+    //     }]).then(function () {
+    //         window.alert("Message sent");
+    //     }).catch(function (error) {
+    //         window.alert("Error sending message: " + error);
+    //     });
+    // });
 
-    //send axios call
-    document.getElementById('btnaxios').addEventListener('click', function () {
-        console.log('axios')
-        let config = {
-            //url: 'https://ebp.tmnewa.com.tw/Partner/App/SignIn',
-            url: 'https://api.github.com',
-            method: 'get',
-
-        };
-
-        //console.log('config:', config)
-        axios(config)
-            .then(function (res) {
-                console.log('response:', res.data);
-                //Actions.carsearch({token: res.data});
-            })
-            .catch(function (err) { console.log('err:', err) });
-    });
-
-    // openWindow call
-    document.getElementById('openwindowbutton').addEventListener('click', function () {
-        liff.openWindow({
-            url: 'https://line.me'
-        });
-    });
-
-    // closeWindow call
-    document.getElementById('closewindowbutton').addEventListener('click', function () {
-        liff.closeWindow();
-    });
-
-    // sendMessages call
-    document.getElementById('sendmessagebutton').addEventListener('click', function () {
-        liff.sendMessages([{
-            type: 'text',
-            text: "You've successfully sent a message! Hooray!"
-        }, {
-            "type": "flex",
-            "altText": "this is a flex message",
-            "contents": {
-                "type": "bubble",
-                "body": {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "hello"
-                        },
-                        {
-                            "type": "separator",
-                            "color": "#000000"
-                        },
-                        {
-                            "type": "text",
-                            "text": "world"
-                        }
-                    ]
-                }
-            }
-        }]).then(function () {
-            window.alert("Message sent");
-        }).catch(function (error) {
-            window.alert("Error sending message: " + error);
-        });
-    });
-
-    // get access token
-    document.getElementById('getaccesstoken').addEventListener('click', function () {
-        const accessToken = liff.getAccessToken();
-        document.getElementById('accesstokenfield').textContent = accessToken;
-        toggleAccessToken();
-    });
+    // // get access token
+    // document.getElementById('getaccesstoken').addEventListener('click', function () {
+    //     const accessToken = liff.getAccessToken();
+    //     document.getElementById('accesstokenfield').textContent = accessToken;
+    //     toggleAccessToken();
+    // });
 
     // get profile call
     document.getElementById('getprofilebutton').addEventListener('click', function () {
@@ -237,9 +194,9 @@ function initializeApp(data) {
     });
 }
 
-function toggleAccessToken() {
-    toggleElement('accesstokendata');
-}
+// function toggleAccessToken() {
+//     toggleElement('accesstokendata');
+// }
 
 function toggleProfileData() {
     toggleElement('profileinfo');
