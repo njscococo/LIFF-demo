@@ -62,21 +62,17 @@ function initializeApp(data) {
         if (signaturePad.isEmpty()) {
             alert("Draw something first!!");
         } else {
-            var sendImageUrl = 'https://linetestingserver.herokuapp.com';
+            var sendImageUrl = 'https://linetestingserver.herokuapp.com/users';
             
             var dataURL = signaturePad.toDataURL("image/jpeg");
 
             let config = {
                 url: sendImageUrl,
-                method: 'get',
-                // data:{
-                //     userId: 'test',
-                //     drawImage: dataURL
-                // }
-                headers: {
-                    'Content-Type': 'application/json',
-                    //'Host': 'ebp.tmnewa.com.tw'
-                },
+                method: 'post',
+                data:{
+                    userId: 'test123',
+                    drawImage: dataURL
+                }                
             }
 
             axios(config)
