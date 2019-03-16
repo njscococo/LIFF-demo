@@ -95,12 +95,12 @@ function initializeApp(data) {
                                         "type": "separator",
                                         "color": "#000000"
                                     },                                   
-                                    // {
-                                    //     "type": "image",
-                                    //     "url": 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
-                                    //     "size": "full",
-                                    //     "aspectRatio": "1.91:1"
-                                    // }
+                                    {
+                                        "type": "image",
+                                        "url": `https://linetestingserver.herokuapp.com/user/${data.context.userId}/${res.data.id}`,
+                                        "size": "full",
+                                        "aspectRatio": "1.91:1"
+                                    }
                                 ]
                             }
                         }
