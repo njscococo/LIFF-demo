@@ -76,7 +76,7 @@ function initializeApp(data) {
 
             axios(config)
                 .then(function (res) {
-                    console.log('send img done:', res);
+                    console.log('send img done id:', res.data.id);
                 
                     liff.sendMessages([{
                         "type": "flex",
