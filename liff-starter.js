@@ -76,7 +76,7 @@ function initializeApp(data) {
 
             axios(config)
                 .then(function (res) {
-                    //console.log('send img done:', res);
+                    console.log('send img done:', res);
                 
                     liff.sendMessages([{
                         "type": "flex",
@@ -95,12 +95,12 @@ function initializeApp(data) {
                                         "type": "separator",
                                         "color": "#000000"
                                     },                                   
-                                    {
-                                        "type": "image",
-                                        "url": 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
-                                        "size": "full",
-                                        "aspectRatio": "1.91:1"
-                                    }
+                                    // {
+                                    //     "type": "image",
+                                    //     "url": 'https://linetestingserver.herokuapp.com/user/'+data.context.userId,
+                                    //     "size": "full",
+                                    //     "aspectRatio": "1.91:1"
+                                    // }
                                 ]
                             }
                         }
