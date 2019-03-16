@@ -105,7 +105,7 @@ function initializeApp(data) {
                             }
                         }
                     }]).then(function () {
-                        window.alert("Message sent");
+                        //window.alert("Message sent");
                     }).catch(function (error) {
                         window.alert("Error sending message: " + error);
                     });
