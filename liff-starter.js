@@ -117,11 +117,11 @@ function initializeApp(data) {
     });
 
     // // openWindow call
-    // document.getElementById('openwindowbutton').addEventListener('click', function () {
-    //     liff.openWindow({
-    //         url: 'https://line.me'
-    //     });
-    // });
+    document.getElementById('openwindowbutton').addEventListener('click', function () {
+        liff.openWindow({
+            url: 'https://line.me'
+        });
+    });
 
     // // closeWindow call
     // document.getElementById('closewindowbutton').addEventListener('click', function () {
