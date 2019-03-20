@@ -4,14 +4,16 @@ window.onload = function (e) {
         initializeApp(data);
         // liff.getProfile().then(function (profile) {
         //     //console.log('profile:', profile)
-     
+
         // }).catch(function (error) {
         //     window.alert("Error getting profile: " + error);
         // });
     });
 };
 
+// initializeApp
 function initializeApp(data) {
+    
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
@@ -27,7 +29,7 @@ function initializeApp(data) {
     // var savePNGButton = wrapper.querySelector("[data-action=save-png]");
     var drawImage = wrapper.querySelector("[data-action=save-jpg]");
     //var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
-    var canvas = wrapper.querySelector("canvas");
+    var canvas = wrapper.querySelector('canvas');
     var signaturePad = new SignaturePad(canvas, {
         // It's Necessary to use an opaque color when saving image as JPEG;
         // this option can be omitted if only saving as PNG or SVG
@@ -77,7 +79,7 @@ function initializeApp(data) {
             axios(config)
                 .then(function (res) {
                     console.log('send img done id:', res.data.id);
-                
+
                     liff.sendMessages([{
                         "type": "flex",
                         "altText": "this is a flex message",
@@ -124,8 +126,31 @@ function initializeApp(data) {
     });
 
     document.getElementById('redirectbutton').addEventListener('click', function () {
-        location.href='https://www.tmnewa.com.tw';
+        //location.href = 'https://www.tmnewa.com.tw';
         //location.replace('https://www.tmnewa.com.tw');
+        let config = {
+            url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
+            method: 'post',
+            //baseURL: 'https://ebp.tmnewa.com.tw/',
+            headers: {
+                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
+                'Content-Type': 'application/json',
+                //'Host': 'ebp.tmnewa.com.tw'
+            },
+            data: {
+                //url: 'https://localhost:5001/api/values',
+                client: '061782',
+                secret: 'Newa1234'
+            }
+        };
+
+        axios(config).then(res=>{
+            console.log('token:', res.data)
+        }).catch(err=>{
+            console.log('tmnewa err:', err)
+        })
+
+
     });
 
     // // closeWindow call
