@@ -130,23 +130,23 @@ function initializeApp(data) {
         //location.replace('https://www.tmnewa.com.tw');
         let config = {
             //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
-            url: 'https://ebp.tmnewa.com.tw/Partner/App/SignIn',
+            url: 'https://linetestingserver.herokuapp.com/tmtoken',
             method: 'post',
             //baseURL: 'https://ebp.tmnewa.com.tw/',
-            headers: {
-                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
-                'Content-Type': 'application/json',
-                //'Host': 'ebp.tmnewa.com.tw'
-            },
-            data: {
-                //url: 'https://localhost:5001/api/values',
-                client: '061782',
-                secret: 'Newa1234'
-            }
+            // headers: {
+            //     'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
+            //     'Content-Type': 'application/json',
+            //     //'Host': 'ebp.tmnewa.com.tw'
+            // },
+            // data: {
+            //     //url: 'https://localhost:5001/api/values',
+            //     client: '061782',
+            //     secret: 'Newa1234'
+            // }
         };
 
         axios(config).then(res=>{
-            console.log('token:', res.data)
+            console.log('token:', res)
         }).catch(err=>{
             console.log('tmnewa err:', err)
         })
