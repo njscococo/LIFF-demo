@@ -2,12 +2,12 @@ window.onload = function (e) {
     liff.init(function (data) {
         //console.log('init data:', data);
         initializeApp(data);
-        liff.getProfile().then(function (profile) {
-            //console.log('profile:', profile)
+        // liff.getProfile().then(function (profile) {
+        //     //console.log('profile:', profile)
      
-        }).catch(function (error) {
-            window.alert("Error getting profile: " + error);
-        });
+        // }).catch(function (error) {
+        //     window.alert("Error getting profile: " + error);
+        // });
     });
 };
 
@@ -119,8 +119,12 @@ function initializeApp(data) {
     // // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://line.me'
+            url: 'https://www.tmnewa.com.tw'
         });
+    });
+
+    document.getElementById('redirectbutton').addEventListener('click', function () {
+        location.replace('https://www.tmnewa.com.tw')
     });
 
     // // closeWindow call
