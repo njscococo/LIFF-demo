@@ -130,7 +130,7 @@ function initializeApp(data) {
         //location.replace('https://www.tmnewa.com.tw');
         let config = {
             //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
-            url: 'https://ebptest.tmnewa.com.tw/Partner/App/SignIn',
+            url: 'https://ebp.tmnewa.com.tw/Partner/App/SignIn',
             method: 'post',
             //baseURL: 'https://ebp.tmnewa.com.tw/',
             headers: {
