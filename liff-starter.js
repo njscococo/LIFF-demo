@@ -124,7 +124,7 @@ function initializeApp(data) {
     });
 
     document.getElementById('redirectbutton').addEventListener('click', function () {
-        location.replace('https://www.tmnewa.com.tw')
+        location.href('https://www.tmnewa.com.tw')
     });
 
     // // closeWindow call
