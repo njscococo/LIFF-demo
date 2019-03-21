@@ -136,6 +136,9 @@ function initializeApp(data) {
             data: {
                 client: '061782',
                 secret: 'Newa1234'
+            },
+            headers: {
+                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
             }
         };
 
