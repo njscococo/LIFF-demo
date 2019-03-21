@@ -137,9 +137,9 @@ function initializeApp(data) {
                 client: '061782',
                 secret: 'Newa1234'
             },
-            headers: {
-                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
-            }
+            // headers: {
+            //     'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
+            // }
         };
 
         axios(config)
