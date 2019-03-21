@@ -142,7 +142,7 @@ function initializeApp(data) {
         axios(config)
             .then(res => {
                 console.log('token:', res)
-                tmnewaDiv.innerHTML = res.data
+                //tmnewaDiv.innerHTML = res.data
                 
             })
             .catch(err => {
