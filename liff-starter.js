@@ -13,7 +13,7 @@ window.onload = function (e) {
 
 // initializeApp
 function initializeApp(data) {
-    
+
     // document.getElementById('languagefield').textContent = data.language;
     // document.getElementById('viewtypefield').textContent = data.context.viewType;
     // document.getElementById('useridfield').textContent = data.context.userId;
@@ -131,28 +131,29 @@ function initializeApp(data) {
         let config = {
             //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
             url: 'https://linetestingserver.herokuapp.com/tmtoken',
-            method: 'post',          
+            method: 'post',
             data: {
                 client: '061782',
                 secret: 'Newa1234'
             }
         };
 
-        axios(config).then(res=>{
-            console.log('token:', res.data.token)
-            return axios({
-                url: 'https://ebptest.tmnewa.com.tw/!carapp/Car/CAQuotation/Index',
-                method: 'get',
-                headers: {
-                    'Authorization': 'Bearer '+ res.data.token
-                }
+        axios(config)
+            .then(res => {
+                console.log('token:', res.data.token)
+                return axios({
+                    url: 'https://ebp.tmnewa.com.tw/Car/CAQuotation/Index',
+                    method: 'get',
+                    headers: {
+                        'Authorization': 'Bearer ' + res.data.token
+                    }
+                })
+            }).then(res => {
+                console.log('tmnewa car search:', res)
             })
-        }).then(res=>{
-            console.log('tmnewa car search:', res)
-        })
-        .catch(err=>{
-            console.log('tmnewa err:', err)
-        })
+            .catch(err => {
+                console.log('tmnewa err:', err)
+            })
 
 
     });
