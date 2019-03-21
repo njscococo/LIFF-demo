@@ -138,11 +138,10 @@ function initializeApp(data) {
             //     'Content-Type': 'application/json',
             //     //'Host': 'ebp.tmnewa.com.tw'
             // },
-            // data: {
-            //     //url: 'https://localhost:5001/api/values',
-            //     client: '061782',
-            //     secret: 'Newa1234'
-            // }
+            data: {
+                client: '061782',
+                secret: 'Newa1234'
+            }
         };
 
         axios(config).then(res=>{
