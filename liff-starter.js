@@ -131,13 +131,7 @@ function initializeApp(data) {
         let config = {
             //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
             url: 'https://linetestingserver.herokuapp.com/tmtoken',
-            method: 'post',
-            //baseURL: 'https://ebp.tmnewa.com.tw/',
-            // headers: {
-            //     'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
-            //     'Content-Type': 'application/json',
-            //     //'Host': 'ebp.tmnewa.com.tw'
-            // },
+            method: 'post',          
             data: {
                 client: '061782',
                 secret: 'Newa1234'
