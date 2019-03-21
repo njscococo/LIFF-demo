@@ -140,8 +140,17 @@ function initializeApp(data) {
 
         axios(config).then(res=>{
             console.log('token:', res.data.token)
-
-        }).catch(err=>{
+            return axios({
+                url: 'https://ebptest.tmnewa.com.tw/!carapp/Car/CAQuotation/Index',
+                method: 'get',
+                headers: {
+                    'Authorization': 'Bearer '+ res.data.token
+                }
+            })
+        }).then(res=>{
+            console.log('tmnewa car search:', res)
+        })
+        .catch(err=>{
             console.log('tmnewa err:', err)
         })
 
