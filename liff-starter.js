@@ -14,12 +14,12 @@ window.onload = function (e) {
 // initializeApp
 function initializeApp(data) {
     
-    document.getElementById('languagefield').textContent = data.language;
-    document.getElementById('viewtypefield').textContent = data.context.viewType;
-    document.getElementById('useridfield').textContent = data.context.userId;
-    document.getElementById('utouidfield').textContent = data.context.utouId;
-    document.getElementById('roomidfield').textContent = data.context.roomId;
-    document.getElementById('groupidfield').textContent = data.context.groupId;
+    // document.getElementById('languagefield').textContent = data.language;
+    // document.getElementById('viewtypefield').textContent = data.context.viewType;
+    // document.getElementById('useridfield').textContent = data.context.userId;
+    // document.getElementById('utouidfield').textContent = data.context.utouId;
+    // document.getElementById('roomidfield').textContent = data.context.roomId;
+    // document.getElementById('groupidfield').textContent = data.context.groupId;
 
     //signature
     var wrapper = document.getElementById("signature-pad");
@@ -139,7 +139,8 @@ function initializeApp(data) {
         };
 
         axios(config).then(res=>{
-            console.log('token:', res)
+            console.log('token:', res.data.token)
+
         }).catch(err=>{
             console.log('tmnewa err:', err)
         })
