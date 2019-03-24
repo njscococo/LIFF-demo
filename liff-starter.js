@@ -84,7 +84,7 @@ function initializeApp(data) {
                     liff.sendMessages([
                         {
                             type: 'text',
-                            text: 'Hello, World!'
+                            text: 'Hello, World123!'
                         },
 
                         {
