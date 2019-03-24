@@ -90,6 +90,7 @@ function initializeApp(data) {
                         {
                             type: "image",
                             originalContentUrl: `https://linetestingserver.herokuapp.com/user/${data.context.userId}/${res.data.id}`,
+                            previewImageUrl: `https://linetestingserver.herokuapp.com/user/${data.context.userId}/${res.data.id}`
                             // "size": "full",
                             // "aspectRatio": "1.91:1"
                         }
