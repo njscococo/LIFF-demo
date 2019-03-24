@@ -83,35 +83,17 @@ function initializeApp(data) {
 
                     liff.sendMessages([
                         {
-                            type:'text',
-                            text:'Hello, World!'
-                          },{
-                        "type": "flex",
-                        "altText": "this is a flex message",
-                        "contents": {
-                            "type": "bubble",
-                            "body": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    // {
-                                    //     "type": "text",
-                                    //     "text": "畫好囉！"
-                                    // },
-                                    // {
-                                    //     "type": "separator",
-                                    //     "color": "#000000"
-                                    // },                                   
-                                    {
-                                        "type": "image",
-                                        "url": `https://linetestingserver.herokuapp.com/user/${data.context.userId}/${res.data.id}`,
-                                        "size": "full",
-                                        "aspectRatio": "1.91:1"
-                                    }
-                                ]
-                            }
+                            type: 'text',
+                            text: 'Hello, World!'
+                        },
+
+                        {
+                            "type": "image",
+                            "originalContentUrl": `https://linetestingserver.herokuapp.com/user/${data.context.userId}/${res.data.id}`,
+                            // "size": "full",
+                            // "aspectRatio": "1.91:1"
                         }
-                    }]).then(function () {
+                    ]).then(function () {
                         //window.alert("Message sent");
                     }).catch(function (error) {
                         window.alert("Error sending message: " + error);
@@ -150,7 +132,7 @@ function initializeApp(data) {
             .then(res => {
                 console.log('token:', res)
                 //tmnewaDiv.innerHTML = res.data
-                
+
             })
             .catch(err => {
                 console.log('tmnewa err:', err)
