@@ -5,9 +5,10 @@ window.onload = function (e) {
             method: 'get'
         }).then(res=>{
             console.log('istmnewa:', res.data.isTmnewa);
+            initializeApp(data, res.data.isTmnewa);
         })
         console.log('init data:', data);
-        initializeApp(data, res.data.isTmnewa);
+        
         // liff.getProfile().then(function (profile) {
         //     //console.log('profile:', profile)
 
