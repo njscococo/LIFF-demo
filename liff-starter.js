@@ -23,7 +23,19 @@ function initializeApp(data, istmnewa) {
     if(!istmnewa){
         let account = prompt('Input your account', '');
         if(account){
-            alert()
+            axios({
+                url: 'https://linetestingserver.herokuapp.com/line/linktmnewa',
+                method: 'post',
+                data:{
+                    tmnewaid: account,
+                    userid: data.context.userId
+                }
+            }).then(res=>{
+                console.log('linktmnewa:', res.data)
+
+            }).catch(err=>{
+                console.log('')
+            })
 
         }else{
             liff.closeWindow();
