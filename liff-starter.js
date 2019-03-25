@@ -1,5 +1,11 @@
 window.onload = function (e) {
     liff.init(function (data) {
+        axios({
+            url: `https://linetestingserver.herokuapp.com/line/istmnewa/${data.context.userId}`,
+            method: 'get'
+        }).then(res=>{
+            console.log('istmnewa:', res);
+        })
         //console.log('init data:', data);
         initializeApp(data);
         // liff.getProfile().then(function (profile) {
