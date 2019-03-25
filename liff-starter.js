@@ -6,7 +6,7 @@ window.onload = function (e) {
         }).then(res=>{
             console.log('istmnewa:', res);
         })
-        //console.log('init data:', data);
+        console.log('init data:', data);
         initializeApp(data);
         // liff.getProfile().then(function (profile) {
         //     //console.log('profile:', profile)
