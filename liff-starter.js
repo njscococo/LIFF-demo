@@ -4,10 +4,10 @@ window.onload = function (e) {
             url: `https://linetestingserver.herokuapp.com/line/istmnewa/${data.context.userId}`,
             method: 'get'
         }).then(res=>{
-            console.log('istmnewa:', res);
+            console.log('istmnewa:', res.data.isTmnewa);
         })
         console.log('init data:', data);
-        initializeApp(data);
+        initializeApp(data, res.data.isTmnewa);
         // liff.getProfile().then(function (profile) {
         //     //console.log('profile:', profile)
 
@@ -18,7 +18,19 @@ window.onload = function (e) {
 };
 
 // initializeApp
-function initializeApp(data) {
+function initializeApp(data, istmnewa) {
+    if(!istmnewa){
+        let account = prompt('Input your account', '');
+        if(account){
+            alert(account)
+
+        }else{
+            return;
+        }
+
+    }
+
+
     var tmnewaDiv = document.querySelector('#tmnewa');
 
     // document.getElementById('languagefield').textContent = data.language;
