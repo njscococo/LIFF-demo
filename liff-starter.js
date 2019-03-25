@@ -23,10 +23,10 @@ function initializeApp(data, istmnewa) {
     if(!istmnewa){
         let account = prompt('Input your account', '');
         if(account){
-            alert(account)
+            alert()
 
         }else{
-            return;
+            liff.closeWindow();
         }
 
     }
