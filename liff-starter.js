@@ -3,12 +3,12 @@ window.onload = function (e) {
         axios({
             url: `https://linetestingserver.herokuapp.com/line/istmnewa/${data.context.userId}`,
             method: 'get'
-        }).then(res=>{
+        }).then(res => {
             console.log('istmnewa:', res.data.isTmnewa);
             initializeApp(data, res.data.isTmnewa);
         })
         console.log('init data:', data);
-        
+
         // liff.getProfile().then(function (profile) {
         //     //console.log('profile:', profile)
 
@@ -20,24 +20,24 @@ window.onload = function (e) {
 
 // initializeApp
 function initializeApp(data, istmnewa) {
-    if(!istmnewa){
+    if (!istmnewa) {
         let account = prompt('Input your account', '');
-        if(account){
+        if (account) {
             axios({
                 url: 'https://linetestingserver.herokuapp.com/line/linktmnewa',
                 method: 'post',
-                data:{
+                data: {
                     tmnewaid: account,
                     userid: data.context.userId
                 }
-            }).then(res=>{
+            }).then(res => {
                 console.log('linktmnewa:', res.data)
 
-            }).catch(err=>{
+            }).catch(err => {
                 console.log('')
             })
 
-        }else{
+        } else {
             liff.closeWindow();
         }
 
@@ -111,12 +111,11 @@ function initializeApp(data, istmnewa) {
             axios(config)
                 .then(function (res) {
                     console.log('send img done id:', res.data.id);
-
                     liff.sendMessages([
-                        {
-                            type: 'text',
-                            text: 'Hello, World123!'
-                        },
+                        // {
+                        //     type: 'text',
+                        //     text: 'Hello, World123!'
+                        // },
 
                         {
                             type: "image",
@@ -125,7 +124,8 @@ function initializeApp(data, istmnewa) {
                             // "size": "full",
                             // "aspectRatio": "1.91:1"
                         }
-                    ]).then(function () {
+                    ]).then(function (resp) {
+                        console.log('liff.sendMessages', resp)
                         //window.alert("Message sent");
                     }).catch(function (error) {
                         window.alert("Error sending message: " + error);
@@ -144,34 +144,34 @@ function initializeApp(data, istmnewa) {
         });
     });
 
-    document.getElementById('redirectbutton').addEventListener('click', function () {
-        //location.href = 'https://www.tmnewa.com.tw';
-        //location.replace('https://www.tmnewa.com.tw');
-        let config = {
-            //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
-            url: 'https://linetestingserver.herokuapp.com/tmtoken',
-            method: 'post',
-            data: {
-                client: '061782',
-                secret: 'Newa1234'
-            },
-            headers: {
-                'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
-            }
-        };
+    // document.getElementById('redirectbutton').addEventListener('click', function () {
+    //     //location.href = 'https://www.tmnewa.com.tw';
+    //     //location.replace('https://www.tmnewa.com.tw');
+    //     let config = {
+    //         //url: 'https://ebptest.tmnewa.com.tw/!carapp/Partner/App/SignIn',
+    //         url: 'https://linetestingserver.herokuapp.com/tmtoken',
+    //         method: 'post',
+    //         data: {
+    //             client: '061782',
+    //             secret: 'Newa1234'
+    //         },
+    //         headers: {
+    //             'Authorization': 'Basic VE1OZXdhOlRNTmV3YUFwcA==',
+    //         }
+    //     };
 
-        axios(config)
-            .then(res => {
-                console.log('token:', res)
-                //tmnewaDiv.innerHTML = res.data
+    //     axios(config)
+    //         .then(res => {
+    //             console.log('token:', res)
+    //             //tmnewaDiv.innerHTML = res.data
 
-            })
-            .catch(err => {
-                console.log('tmnewa err:', err)
-            })
+    //         })
+    //         .catch(err => {
+    //             console.log('tmnewa err:', err)
+    //         })
 
 
-    });
+    // });
 
     // // closeWindow call
     // document.getElementById('closewindowbutton').addEventListener('click', function () {
