@@ -153,7 +153,14 @@ function initializeApp(data, istmnewa) {
 
         axios(config)
             .then(res => {
-                console.log('product list', res)
+                let inner = res.data.map((elm, idx) => {
+                    return `<div><img src="https://linetestingserver.herokuapp.com/productimg/${elm.id}" height="42" width="42">
+                    <div>${elm.title}</div>
+                    <div>${elm.price}</div>
+                    </div>`
+                })
+                tmnewaDiv.innerHTML = inner
+                console.log('product list', res.data)
             })
             .catch(err => console.log('productlist err', err))
     })
