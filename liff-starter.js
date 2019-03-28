@@ -154,7 +154,7 @@ function initializeApp(data, istmnewa) {
         axios(config)
             .then(res => {
                 let inner = res.data.map((elm, idx) => {
-                    return `<div><img src="https://linetestingserver.herokuapp.com/productimg/${elm.id}" height="142" width="142">
+                    return `<div><img src="https://linetestingserver.herokuapp.com/productimg/${elm.id}" height="342" width="342">
                     <div>${elm.title}</div>
                     <div>${elm.price}</div>
                     </div>`
