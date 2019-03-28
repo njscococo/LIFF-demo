@@ -144,6 +144,20 @@ function initializeApp(data, istmnewa) {
         });
     });
 
+    //productlist
+    document.getElementById('productlist').addEventListener('click', () => {
+        let config = {
+            url: 'https://linetestingserver.herokuapp.com/products',
+            method: 'get'
+        };
+
+        axios(config)
+            .then(res => {
+                console.log('product list', res)
+            })
+            .catch(err => console.log('productlist err', err))
+    })
+
     // document.getElementById('redirectbutton').addEventListener('click', function () {
     //     //location.href = 'https://www.tmnewa.com.tw';
     //     //location.replace('https://www.tmnewa.com.tw');
@@ -178,41 +192,6 @@ function initializeApp(data, istmnewa) {
     //     liff.closeWindow();
     // });
 
-    // // sendMessages call
-    // document.getElementById('sendmessagebutton').addEventListener('click', function () {
-    //     liff.sendMessages([{
-    //         type: 'text',
-    //         text: "You've successfully sent a message! Hooray!"
-    //     }, {
-    //         "type": "flex",
-    //         "altText": "this is a flex message",
-    //         "contents": {
-    //             "type": "bubble",
-    //             "body": {
-    //                 "type": "box",
-    //                 "layout": "horizontal",
-    //                 "contents": [
-    //                     {
-    //                         "type": "text",
-    //                         "text": "hello"
-    //                     },
-    //                     {
-    //                         "type": "separator",
-    //                         "color": "#000000"
-    //                     },
-    //                     {
-    //                         "type": "text",
-    //                         "text": "world"
-    //                     }
-    //                 ]
-    //             }
-    //         }
-    //     }]).then(function () {
-    //         window.alert("Message sent");
-    //     }).catch(function (error) {
-    //         window.alert("Error sending message: " + error);
-    //     });
-    // });
 
     // // get access token
     // document.getElementById('getaccesstoken').addEventListener('click', function () {
